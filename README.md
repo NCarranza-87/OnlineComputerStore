@@ -16,7 +16,7 @@ computer system their own perpose.
 
 ## Meta
 
-Nicholas Carranza - ncarranza5487@outlook.com
+If you have and suggestion or questions please add an issue.
 
 https://github.com/NCarranza-87
 
