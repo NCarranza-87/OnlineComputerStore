@@ -29,5 +29,7 @@ namespace OnlineComputerStore.Models
         {
             return new ApplicationDbContext();
         }
+
+        public virtual DbSet<Products> Products { get; set; }
     }
 }
