@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
+
 namespace OnlineComputerStore.Models
 {
     public class CartItem
     {
-        [key]
+        [Key]
         public string ItemID { get; set; }
 
         public string CartID { get; set; }
