@@ -7,8 +7,7 @@ using System.Web;
 namespace OnlineComputerStore.Models
 {
     public class CartItem
-    {
-        [Key]
+    { 
         public string ItemID { get; set; }
 
         public string CartID { get; set; }
@@ -18,7 +17,5 @@ namespace OnlineComputerStore.Models
         public int ProductID { get; set; }
 
         public virtual Product Product { get; set; }
-
-
     }
 }

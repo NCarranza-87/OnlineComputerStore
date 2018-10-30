@@ -31,5 +31,6 @@ namespace OnlineComputerStore.Models
         }
 
         public virtual DbSet<Products> Products { get; set; }
+
     }
 }
