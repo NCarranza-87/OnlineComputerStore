@@ -30,7 +30,7 @@ namespace OnlineComputerStore.Models
             return new ApplicationDbContext();
         }
 
-        public virtual DbSet<Products> Products { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
 
     }
 }
