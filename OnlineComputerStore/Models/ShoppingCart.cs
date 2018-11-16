@@ -6,6 +6,8 @@ using System.Web;
 
 namespace OnlineComputerStore.Models
 {
+    /*If all the methods in this class are static and you don't have a reason
+     * to create any instances of this class, you should mark it as static */
     public class ShoppingCart
     {
         public static short GetTotalItems()
@@ -20,10 +22,14 @@ namespace OnlineComputerStore.Models
             return numProducts;
         }
 
+        //instead of using "cart" in multiple places you could add a constant
+        const string CartCookie = "cart";
         private static List<Product> GetProducts()
         {
             List<Product> products = new List<Product>();
-            HttpCookie cookieCart = HttpContext.Current.Request.Cookies["cart"];
+            //instead of using "cart" in multiple places you could add a constant
+            //we can avoid magic strings just like magic numbers
+            HttpCookie cookieCart = HttpContext.Current.Request.Cookies[CartCookie];
             if (cookieCart == null)
                 return products;
 

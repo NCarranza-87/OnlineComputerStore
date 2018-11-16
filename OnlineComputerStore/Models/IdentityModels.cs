@@ -30,6 +30,18 @@ namespace OnlineComputerStore.Models
             return new ApplicationDbContext();
         }
 
+        //You can add this method to make sure all your strings default to varchar(200)
+        //That way you don't have to remember to add a data annotation to each string property
+        //for all of your models
+        //ref: https://dba.stackexchange.com/questions/48408/ef-code-first-uses-nvarcharmax-for-all-strings-will-this-hurt-query-performan 
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Properties<string>()
+                        .Configure(s => s.HasMaxLength(200).HasColumnType("varchar"));
+
+            base.OnModelCreating(modelBuilder);
+        }
+
         public virtual DbSet<Product> Products { get; set; }
     }
 }
