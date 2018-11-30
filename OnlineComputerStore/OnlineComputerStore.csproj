@@ -65,6 +65,12 @@
     <Reference Include="Microsoft.ApplicationInsights, Version=2.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.2.8.1\lib\net46\Microsoft.ApplicationInsights.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.2.2\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.SystemWeb, Version=2.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.SystemWeb.2.2.2\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AspNet.TelemetryCorrelation, Version=1.0.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.TelemetryCorrelation.1.0.4\lib\net45\Microsoft.AspNet.TelemetryCorrelation.dll</HintPath>
     </Reference>
@@ -193,6 +199,8 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MembersController.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -200,11 +208,19 @@
     <Compile Include="Migrations\201810292246284_Product.Designer.cs">
       <DependentUpon>201810292246284_Product.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811280245058_Members.cs" />
+    <Compile Include="Migrations\201811280245058_Members.Designer.cs">
+      <DependentUpon>201811280245058_Members.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Member.cs" />
+    <Compile Include="Models\MemberDB.cs" />
+    <Compile Include="Models\ProductDB.cs" />
     <Compile Include="Models\Products.cs" />
+    <Compile Include="Models\SessionHelper.cs" />
     <Compile Include="Models\ShoppingCart.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -221,6 +237,20 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\CompoentItemPics\cpu_case.jpg" />
+    <Content Include="Images\CompoentItemPics\monitors.jpg" />
+    <Content Include="Images\CompoentItemPics\motherboads.jpg" />
+    <Content Include="Images\CompoentItemPics\processors.jpg" />
+    <Content Include="Images\CompoentItemPics\psu.jpg" />
+    <Content Include="Images\CompoentItemPics\ram.jpg" />
+    <Content Include="Images\ErrorPic\stock-vector-broken-robot-fix-technology-a-hand-drawn-vector-cartoon-illustration-of-a-broken-robot-trying-to-527043610.jpg" />
+    <Content Include="Images\SponsorPics\amd_logo.png" />
+    <Content Include="Images\SponsorPics\asrock_logo.png" />
+    <Content Include="Images\SponsorPics\evga_logo.png" />
+    <Content Include="Images\SponsorPics\gigabyte_logo.jpg" />
+    <Content Include="Images\SponsorPics\intel_logo.png" />
+    <Content Include="Images\SponsorPics\microsoft_logo.png" />
+    <Content Include="Images\SponsorPics\msi_logo.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
@@ -245,6 +275,8 @@
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.signalR-2.2.2.js" />
+    <Content Include="Scripts\jquery.signalR-2.2.2.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -303,6 +335,16 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Members\Create.cshtml" />
+    <Content Include="Views\Members\Delete.cshtml" />
+    <Content Include="Views\Members\Details.cshtml" />
+    <Content Include="Views\Members\Edit.cshtml" />
+    <Content Include="Views\Members\Index.cshtml" />
+    <Content Include="Views\Products\Create.cshtml" />
+    <Content Include="Views\Products\Delete.cshtml" />
+    <Content Include="Views\Products\Details.cshtml" />
+    <Content Include="Views\Products\Edit.cshtml" />
+    <Content Include="Views\Products\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -317,6 +359,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201810292246284_Product.resx">
       <DependentUpon>201810292246284_Product.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811280245058_Members.resx">
+      <DependentUpon>201811280245058_Members.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
