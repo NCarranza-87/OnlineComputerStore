@@ -212,6 +212,14 @@
     <Compile Include="Migrations\201811280245058_Members.Designer.cs">
       <DependentUpon>201811280245058_Members.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201812040008029_AlteredMember.cs" />
+    <Compile Include="Migrations\201812040008029_AlteredMember.Designer.cs">
+      <DependentUpon>201812040008029_AlteredMember.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812040018170_AlteredProducts.cs" />
+    <Compile Include="Migrations\201812040018170_AlteredProducts.Designer.cs">
+      <DependentUpon>201812040018170_AlteredProducts.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -362,6 +370,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201811280245058_Members.resx">
       <DependentUpon>201811280245058_Members.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812040008029_AlteredMember.resx">
+      <DependentUpon>201812040008029_AlteredMember.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812040018170_AlteredProducts.resx">
+      <DependentUpon>201812040018170_AlteredProducts.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
