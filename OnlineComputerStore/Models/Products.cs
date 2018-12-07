@@ -19,6 +19,10 @@ namespace OnlineComputerStore.Models
         public string ProductName { get; set; }
 
         [StringLength(100)]
+        [Display(Name = "Category:")]
+        public string Category { get; set; }
+
+        [StringLength(100)]
         [Display(Name = "Product Description:")]
         [Column(TypeName = "varchar")]
         public string ProductDescription { get; set; }
