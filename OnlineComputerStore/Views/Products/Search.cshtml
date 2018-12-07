@@ -1,0 +1,126 @@
+﻿@model OnlineComputerStore.Models.ProductSearchModel
+
+@{
+    ViewBag.Title = "Search";
+}
+
+<h2>Search</h2>
+
+@using (Html.BeginForm("Search", "Products", FormMethod.Get))
+{
+    <div class="form-horizontal">
+        <h4>ProductSearchViewModel</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.ProductName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ProductName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ProductName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MinPrice, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MinPrice, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.MinPrice, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MaxPrice, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MaxPrice, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.MaxPrice, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        @{
+            List<SelectListItem> categories = new List<SelectListItem>();
+            categories.Add(new SelectListItem()
+            {
+                Text = "Computer Case",
+                Value = "Computer Case"
+            });
+            categories.Add(new SelectListItem()
+            {
+                Text = "Mouse",
+                Value = "Mouse"
+            });
+            categories.Add(new SelectListItem()
+            {
+                Text = "Keybaord",
+                Value = "Keyboards"
+            });
+            categories.Add(new SelectListItem()
+            {
+                Text = "RAM",
+                Value = "RAM"
+            });
+            categories.Add(new SelectListItem()
+            {
+                Text = "Monitors",
+                Value = "Monitors"
+            });
+            categories.Add(new SelectListItem()
+            {
+                Text = "Motherboards",
+                Value = "Motherboards"
+            });
+            categories.Add(new SelectListItem()
+            {
+                Text = "Power Supplies",
+                Value = "Power Supplies"
+            });
+            categories.Add(new SelectListItem()
+            {
+                Text = "Processors",
+                Value = "Processors"
+            });
+        }
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Category, categories,
+                            "SELECT CATEGORY", new { @class="form-control"})
+                @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Search" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@* Display Results *@
+@{
+    if (Model.SearchProductResults.Count > 0)
+    {
+        Html.RenderPartial("_ProductList", Model.SearchProductResults);
+    }
+    //else
+    //{
+    //    Html.Raw("<h2>No Products to display</h2>");
+    //}
+}
+
+@if (Model.SearchProductResults.Count == 0)
+{
+    <h2>No products to display</h2>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+

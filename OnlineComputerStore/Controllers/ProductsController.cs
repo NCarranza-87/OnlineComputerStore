@@ -14,6 +14,62 @@ namespace OnlineComputerStore.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+        [HttpGet]
+        public ActionResult Search(ProductSearchModel productSearch)
+        {
+            if(UserHasNotSearched(productSearch))
+            {
+                return View(productSearch);
+            }
+
+            // Select all products from database
+            IQueryable<Product> queryProduct = from p in db.Products
+                                               select p;
+
+            if (productSearch.MaxPrice.HasValue)
+            {
+                // Adds WHERE price < search.MaxPrice
+                queryProduct = from p in queryProduct
+                               where p.ProductPrice <= productSearch.MaxPrice.Value
+                               select p;
+            }
+            if (productSearch.MinPrice.HasValue)
+            {
+                queryProduct = from p in queryProduct
+                               where p.ProductPrice >= productSearch.MinPrice.Value
+                               select p;
+            }
+            if (productSearch.ProductName != null)
+            {
+                queryProduct = from p in queryProduct
+                               where p.ProductName.Contains(productSearch.ProductName)
+                               select p;
+            }
+            if (productSearch.Category != null)
+            {
+                queryProduct = from p in queryProduct
+                               where p.Category == productSearch.Category
+                               select p;
+            }
+
+            // SEND completed query to database and get products
+            productSearch.SearchProductResults = queryProduct.ToList();
+
+            return View(productSearch);
+        }
+
+        private bool UserHasNotSearched(ProductSearchModel productSearch)
+        {
+            if(productSearch.MaxPrice == null &&
+                productSearch.MinPrice == null &&
+                productSearch.ProductName == null &&
+                productSearch.Category == null)
+            {
+                return true;
+            }
+            return false;
+        }
+
         // GET: Products
         public ActionResult Index()
         {

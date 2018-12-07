@@ -31,7 +31,6 @@ namespace OnlineComputerStore.Models
 
             bool doesExist = (from member in db.Members
                               where member.Username == log.Username
-                              && member.Password == log.Password
                               select member).Any();
 
             return doesExist;

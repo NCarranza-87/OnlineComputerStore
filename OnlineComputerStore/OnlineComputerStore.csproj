@@ -213,6 +213,14 @@
     <Compile Include="Migrations\201811280245058_Members.Designer.cs">
       <DependentUpon>201811280245058_Members.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201812040008029_AlteredMember.cs" />
+    <Compile Include="Migrations\201812040008029_AlteredMember.Designer.cs">
+      <DependentUpon>201812040008029_AlteredMember.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812040018170_AlteredProducts.cs" />
+    <Compile Include="Migrations\201812040018170_AlteredProducts.Designer.cs">
+      <DependentUpon>201812040018170_AlteredProducts.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -221,6 +229,7 @@
     <Compile Include="Models\MemberDB.cs" />
     <Compile Include="Models\ProductDB.cs" />
     <Compile Include="Models\Products.cs" />
+    <Compile Include="Models\ProductSearchModel.cs" />
     <Compile Include="Models\SessionHelper.cs" />
     <Compile Include="Models\ShoppingCart.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -346,8 +355,6 @@
     <Content Include="Views\Products\Details.cshtml" />
     <Content Include="Views\Products\Edit.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
-    <Content Include="Views\Error\ServerProblems.cshtml" />
-    <Content Include="Views\Error\NotFound.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -365,6 +372,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201811280245058_Members.resx">
       <DependentUpon>201811280245058_Members.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812040008029_AlteredMember.resx">
+      <DependentUpon>201812040008029_AlteredMember.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812040018170_AlteredProducts.resx">
+      <DependentUpon>201812040018170_AlteredProducts.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
