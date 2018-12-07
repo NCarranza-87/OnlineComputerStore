@@ -45,10 +45,10 @@ namespace OnlineComputerStore.Controllers
                                where p.ProductName.Contains(productSearch.ProductName)
                                select p;
             }
-            if (productSearch.Category != null)
+            if (productSearch.ProductCategory != null)
             {
                 queryProduct = from p in queryProduct
-                               where p.Category == productSearch.Category
+                               where p.Category == productSearch.ProductCategory
                                select p;
             }
 

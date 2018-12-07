@@ -18,7 +18,7 @@ namespace OnlineComputerStore.Models
 
         public double? MaxPrice { get; set; }
 
-        public string Category { get; set; }
+        public string ProductCategory { get; set; }
 
         public List<Product> SearchProductResults { get; set; }
     }
