@@ -23,6 +23,28 @@
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Products", "Index", "Prouducts")</li>
+                    @if (OnlineComputerStore.Models.SessionHelper.IsUserLoggedIn())
+                    {
+                        <li>@Html.ActionLink("Log Out", "Logout", "User")</li>
+                        <li>
+                            <a class="btn btn-default" href="?">
+                                <span class="glyphicon glyphicon-shopping-cart">
+                                    <span class="badge">
+                                        @OnlineComputerStore.Models.ShoppingCart.GetTotalItems();
+                                    </span>
+                                </span>
+                            </a>
+                        </li>
+                    }
+                    else
+                    {
+                        // User Register
+                        <li>@Html.ActionLink("Register", "Register", "User")</li>
+                        
+                        // User User Login
+                        <li>@Html.ActionLink("Login", "Login", "User")</li>
+                    }
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

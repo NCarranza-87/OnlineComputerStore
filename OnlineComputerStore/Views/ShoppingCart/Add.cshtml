@@ -1,0 +1,26 @@
+﻿@model OnlineComputerStore.Models.Product
+
+@{
+    ViewBag.Title = "Add";
+}
+
+<h2>Add</h2>
+
+<div>
+    <h4>Product</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </dt>
+        <dt>
+            @Html.DisplayFor(model => model.ProductName)
+        </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductPrice)
+        </dt>
+        <dt>
+            @Html.DisplayFor(model => model.ProductPrice)
+        </dt>
+    </dl>
+</div>

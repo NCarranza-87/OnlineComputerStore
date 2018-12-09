@@ -48,6 +48,11 @@ namespace OnlineComputerStore.Models
             LoggedUserIn(username, DefaultRole);
         }
 
+        public static void LogUserOut()
+        {
+            HttpContext.Current.Session.Abandon();
+        }
+
         private static void LoggedUserIn(string username, string role)
         {
             HttpContext.Current.Session[Username] = username;
@@ -55,16 +60,21 @@ namespace OnlineComputerStore.Models
             HttpContext.Current.Session[Role] = role;
         }
 
-        public static void LogUserOut()
-        {
-            HttpContext.Current.Session.Abandon();
-        }
 
-        private static bool IsUserLoggedIn()
+        public static bool IsUserLoggedIn()
         {
             if (HttpContext.Current.Session[Username] == null)
                 return false;
             return true;
+        }
+
+        public static bool IsAdmin()
+        {
+            string role = HttpContext.Current
+                .Session[Role].ToString();
+            if (role == Adminstrator)
+                return true;
+            return false;
         }
     }
 }
